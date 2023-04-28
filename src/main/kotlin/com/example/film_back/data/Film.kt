@@ -11,20 +11,22 @@ data class Film(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long?,
     var title: String,
+    var yearr : Int,
     @Lob
     @Column(name = "image")
-    var image : ByteArray?, // Use a byte array to store the image data
+    var image : String, // Use a byte array to store the image data
     var director : String,
     var synopsis : String
 ) {
-    constructor() : this(null,"", null, "", ""  ) {
+    constructor() : this(null,"", 0, "", "", ""  ) {
 
     }
 
     constructor(filmDto: FilmDto) : this(
         null,
         filmDto.title,
-        null,
+        filmDto.yearr,
+        filmDto.image,
         filmDto.director,
         filmDto.synopsis)
 }
